@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 
@@ -38,6 +39,6 @@ app.post('/slack/events', async (req) => {
 	}
 });
 
-app.listen(process.env.FUNCTIONS_PORT || 8000, function () {
+app.listen(process.env.PORT || 8000, function () {
 	console.log(`Awaiting inputs... 👀`);
 });
