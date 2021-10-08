@@ -16,29 +16,27 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/index.html');
 });
 
-app.post('/slack/events', async (req, res) => {
-	const { challenge } = req.body;
-	res.send({ challenge });
-	// const { event } = req.body;
-	// const { text, type, user } = event;
+app.post('/slack/events', async (req) => {
+	const { event } = req.body;
+	const { text, type, user } = event;
 
-	// if (type === 'app_mention') {
-	// 	try {
-	// 		const params = parseMessageParams(text);
-	// 		const dataResults = await getNhtsaData(params);
-	// 		const paramCheck = verifyParams(params, dataResults);
+	if (type === 'app_mention') {
+		try {
+			const params = parseMessageParams(text);
+			const dataResults = await getNhtsaData(params);
+			const paramCheck = verifyParams(params, dataResults);
 
-	// 		if (paramCheck) {
-	// 			postMessage(COMMON_ERROR_MESSAGE);
-	// 		} else {
-	// 			const messageBlock = formatBlockMessage(user, dataResults);
-	// 			postMessage(messageBlock);
-	// 		}
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 		postMessage(COMMON_ERROR_MESSAGE);
-	// 	}
-	// }
+			if (paramCheck) {
+				postMessage(COMMON_ERROR_MESSAGE);
+			} else {
+				const messageBlock = formatBlockMessage(user, dataResults);
+				postMessage(messageBlock);
+			}
+		} catch (err) {
+			console.error(err);
+			postMessage(COMMON_ERROR_MESSAGE);
+		}
+	}
 });
 
 app.listen(process.env.PORT || 8000, function () {
