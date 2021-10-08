@@ -12,7 +12,7 @@ const COMMON_ERROR_MESSAGE =
 	"I'm sorry, you're either missing a value or at least one of the values entered is wrong :cry:\nPlease, check your input and try again";
 
 app.get('/', (req, res) => {
-	res.sendFile('./index.html');
+	res.sendFile(__dirname + '/index.html');
 });
 
 app.post('/slack/events', async (req) => {
