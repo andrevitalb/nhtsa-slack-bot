@@ -38,6 +38,6 @@ app.post('/slack/events', async (req) => {
 	}
 });
 
-app.listen(process.env.FUNCTIONS_PORT || 3501, function () {
+app.listen(process.env.FUNCTIONS_PORT || 8000, function () {
 	console.log(`Awaiting inputs... 👀`);
 });
