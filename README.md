@@ -33,5 +33,11 @@ In case of having two fuels, values for both `FuelTypePrimary` and `FuelTypeSeco
 If the inputted values match those of NHTSA's API, the bot will respond with a formatted message containing the vehicles data.
 
 <p align="center">
-	<img src="https://www.andrevital.com/extra/nhtsa-slack-bot/response.png" width="45%">
+	<img src="https://www.andrevital.com/extra/nhtsa-slack-bot/response.png" width="55%">
+</p>
+
+If the input either has one or more incorrect fields, or is missing any field the bot will let the user know so too.
+
+<p align="center">
+	<img src="https://www.andrevital.com/extra/nhtsa-slack-bot/error-response.png" width="70%">
 </p>
