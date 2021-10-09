@@ -22,7 +22,7 @@ exports.parseMessageParams = (messageInput) => {
 	);
 
 	const fuels = fragments.fuels.split(',');
-	return { ...fragments, fuels: { primary: fuels[0].trim(), secondary: fuels[1].trim() ?? '' } };
+	return { ...fragments, fuels: { primary: fuels[0].trim(), secondary: fuels[1]?.trim() ?? '' } };
 };
 
 /**
