@@ -10,19 +10,19 @@ const paramNames = ['vin', 'make', 'model', 'year', 'fuels'];
  */
 exports.parseMessageParams = (messageInput) => {
 	const baseFragments = messageInput?.toLowerCase()?.trim()?.split('.');
-	if (baseFragments?.length !== 5) return null;
+	if (baseFragments?.length < 5) return null;
 
 	const fragments = {};
 	paramNames.forEach(
 		(name) =>
 			(fragments[name] = baseFragments
-				.find((fragment) => fragment.indexOf(`${name}: `) !== -1)
-				.split(`${name}: `)[1]
+				.find((fragment) => fragment.indexOf(`${name}:`) !== -1)
+				.split(`${name}:`)[1]
 				.trim())
 	);
 
 	const fuels = fragments.fuels.split(',');
-	return { ...fragments, fuels: { primary: fuels[0], secondary: fuels[1] ?? '' } };
+	return { ...fragments, fuels: { primary: fuels[0].trim(), secondary: fuels[1].trim() ?? '' } };
 };
 
 /**
