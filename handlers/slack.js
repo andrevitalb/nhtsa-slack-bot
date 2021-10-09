@@ -12,7 +12,6 @@ const client = new WebClient(process.env.SLACK_CARMEN_BOT_TOKEN);
  */
 exports.postMessage = async (message, channel = 'C02H0L2RTRC') => {
 	try {
-		console.log(process.env.SLACK_CARMEN_BOT_TOKEN);
 		const postMessageBody = {
 			token: process.env.SLACK_CARMEN_BOT_TOKEN,
 			channel,
